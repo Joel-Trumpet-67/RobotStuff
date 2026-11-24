@@ -1,7 +1,7 @@
 # Original CAD stays local (the robot STEP is 420 MB; GitHub rejects files > 100 MB).
 # The browser uses the converted models in web/assets/.
-cad/*.step
-cad/*.stp
+**/cad/*.step
+**/cad/*.stp
 
 .DS_Store
 __pycache__/

@@ -1,4 +1,4 @@
-# Publishes web/ to GitHub Pages whenever main is pushed.
+# Publishes rebuilt/web/ to GitHub Pages whenever main is pushed.
 # One-time setup: repo Settings -> Pages -> Source: "GitHub Actions".
 name: Deploy to GitHub Pages
 
@@ -27,6 +27,6 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: web
+          path: rebuilt/web
       - id: deployment
         uses: actions/deploy-pages@v4

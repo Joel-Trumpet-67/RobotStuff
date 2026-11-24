@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BIOBUZZ Sim</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+      "rapier": "https://cdn.jsdelivr.net/npm/@dimforge/rapier3d-compat@0.14.0/rapier.es.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="view"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="scorebar">
+      <div class="score red"><span class="label">RED</span><span id="score-red">0</span></div>
+      <div id="clock">
+        <div id="period">AUTO</div>
+        <div id="time">0:30</div>
+      </div>
+      <div class="score blue"><span id="score-blue">0</span><span class="label">BLUE</span></div>
+    </div>
+    <div id="status">
+      <div id="hopper"></div>
+      <div id="status-lines"></div>
+    </div>
+    <div id="toasts"></div>
+    <div id="hint">Esc: menu</div>
+  </div>
+
+  <!-- Menu -->
+  <div id="menu" class="overlay">
+    <div class="panel">
+      <h1>BIOBUZZ Sim</h1>
+      <p class="sub">FTC 2026–27 · goBILDA kit robot</p>
+
+      <div class="row">
+        <label>Alliance</label>
+        <div class="seg" data-name="alliance">
+          <button data-value="red" class="on red">Red</button>
+          <button data-value="blue" class="blue">Blue</button>
+        </div>
+      </div>
+      <div class="row">
+        <label>Start</label>
+        <div class="seg" data-name="start">
+          <button data-value="alliance" class="on">Alliance wall</button>
+          <button data-value="back">Back wall</button>
+          <button data-value="audience">Audience wall</button>
+        </div>
+      </div>
+      <div class="row">
+        <label>Mode</label>
+        <div class="seg" data-name="mode">
+          <button data-value="match" class="on">Match</button>
+          <button data-value="free">Free drive</button>
+        </div>
+      </div>
+
+      <button id="start" class="primary">Start</button>
+      <button id="resume" class="hidden">Resume</button>
+
+      <details>
+        <summary>Controls</summary>
+        <table class="controls">
+          <tr><th></th><th>Keyboard</th><th>Gamepad</th></tr>
+          <tr><td>Drive</td><td>W A S D</td><td>Left stick</td></tr>
+          <tr><td>Turn</td><td>← → or Q E</td><td>Right stick</td></tr>
+          <tr><td>Intake</td><td>F (toggle)</td><td>LT (hold)</td></tr>
+          <tr><td>Eject</td><td>R (hold)</td><td>LB (hold)</td></tr>
+          <tr><td>Shoot – HIVE</td><td>Space</td><td>RT</td></tr>
+          <tr><td>Shoot – FLOWER</td><td>V</td><td>RB</td></tr>
+          <tr><td>Camera</td><td>C or 1 / 2 / 3</td><td>Y</td></tr>
+          <tr><td>Field / robot centric</td><td>M</td><td>X</td></tr>
+          <tr><td>Aim line</td><td>T</td><td>B</td></tr>
+          <tr><td>Menu</td><td>Esc</td><td>Start</td></tr>
+        </table>
+      </details>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div id="results" class="overlay hidden">
+    <div class="panel">
+      <h2 id="result-title">Match over</h2>
+      <div id="result-body"></div>
+      <button id="again" class="primary">Play again</button>
+      <button id="to-menu">Menu</button>
+    </div>
+  </div>
+
+  <div id="loading" class="overlay"><div class="panel">Loading field…</div></div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
